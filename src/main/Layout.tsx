@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useTheme, Box, Chip, IconButton } from "@mui/material";
 import DrawerNavigation from "./Drawer-Navigation";
 import AccountMenu from "./Account-Menu";
@@ -6,6 +6,8 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useDisclosure } from "../hooks/useDisclosure";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../services/store-config";
 
 type LayoutProps = {
   toggleTheme: () => void;
@@ -32,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ toggleTheme }) => {
     color: "white",
   };
 
-  const [moduleName, setModuleName] = useState<string>("");
+  const moduleName = useSelector((state: RootState) => state.moduleName.moduleName);
 
   const { isOpen: isDrawer, onToggle: toggleDrawer } = useDisclosure();
   const { isOpen: isMenu, onToggle: toggleMenu } = useDisclosure();
@@ -63,7 +65,6 @@ const Layout: React.FC<LayoutProps> = ({ toggleTheme }) => {
       <DrawerNavigation
         isOpen={isDrawer}
         onClose={toggleDrawer}
-        setModuleName={setModuleName}
       />
       <AccountMenu
         anchorEl={anchorRef.current}

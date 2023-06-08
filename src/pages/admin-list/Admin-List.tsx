@@ -35,8 +35,6 @@ const AdminList: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const { data: adminData, isLoading } = useGetAdminsQuery({});
 
-  console.log(adminData);
-
   interface AdminItem {
     userName: string;
     fullname: string;

@@ -4,10 +4,12 @@ const colorSchemes = {
   light: {
     primary: "#f0eded",
     secondary: "#0B4775",
+    error: "#F30737",
   },
   dark: {
     primary: "#212121",
     secondary: "#757575",
+    error: "#ed5574",
   },
 };
 
@@ -20,6 +22,9 @@ const lightTheme = createTheme({
     secondary: {
       main: colorSchemes.light.secondary,
     },
+    error: {
+      main: colorSchemes.light.error,
+    },
   },
 });
 
@@ -31,6 +36,9 @@ const darkTheme = createTheme({
     },
     secondary: {
       main: colorSchemes.dark.secondary,
+    },
+    error: {
+      main: colorSchemes.dark.error,
     },
   },
 });
