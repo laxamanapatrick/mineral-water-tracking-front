@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -9,12 +9,11 @@ interface useFormSetupProps {
 
 export const useFormSetup = ({ schema, defaultValues }: useFormSetupProps) => {
   const {
-    handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     setValue,
     watch,
   } = useForm({ defaultValues, resolver: yupResolver(schema) });
 
-  return { handleSubmit, control, errors, Controller, setValue, watch };
+  return { control, errors, isValid, setValue, watch };
 };

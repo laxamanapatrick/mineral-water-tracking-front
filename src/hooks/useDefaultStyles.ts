@@ -1,7 +1,6 @@
 import { useTheme } from "@mui/material";
 
 export const useDefaultStyles = () => {
-
   const theme = useTheme();
 
   const defaultButtonStyle = {
@@ -14,6 +13,15 @@ export const useDefaultStyles = () => {
         bgcolor: theme.palette.secondary.main,
         variant: "contained",
       },
+      ":disabled": {
+        color: "gray",
+        bgcolor: "gray",
+        border: `none`,
+        "&.MuiButtonBase-root:disabled": {
+          cursor: "not-allowed",
+          pointerEvents: "auto",
+        },
+      },
     },
     ".cancelButtons": {
       color: theme.palette.error.main,
@@ -24,12 +32,32 @@ export const useDefaultStyles = () => {
         bgcolor: theme.palette.error.main,
         variant: "contained",
       },
+      ":disabled": {
+        color: "gray",
+        bgcolor: "gray",
+        border: `none`,
+        "&.MuiButtonBase-root:disabled": {
+          cursor: "not-allowed",
+          pointerEvents: "auto",
+        },
+      },
     },
   };
 
-  const defaultTableStyle = {
+  const defaultTextFieldStyle = {
+    size: "small",
+    color: theme.palette.secondary.main,
+    bgcolor: theme.palette.common.white,
+    "& .Mui-focused.MuiFormLabel-root": {
+      color: `${theme.palette.secondary.main} !important`,
+    },
+    "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: `${theme.palette.secondary.main} !important`,
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderRadius: "none",
+    },
+  };
 
-  }
-
-  return { defaultButtonStyle, defaultTableStyle };
+  return { defaultButtonStyle, defaultTextFieldStyle };
 };
